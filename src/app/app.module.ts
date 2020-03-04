@@ -12,16 +12,26 @@ import { MenuComponent } from './menu/menu.component';
 import { RequestComponent } from './modals/request/request.component';
 
 import { RouterModule, Routes } from '@angular/router';
+import { AuthenticationGuard } from './services/authentication.guard';
+import { ImageCropperModule } from 'ngx-image-cropper';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
+import {environment} from '../environments/environment';
+// 1. Import the libs you need
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 /**
  * Router for views
  */
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'home', component: HomeComponent },
+  { path: 'home', component: HomeComponent, canActivate: [AuthenticationGuard] },
   { path: 'login', component: LoginComponent },
-  { path: 'conversation/:uid', component: ConversationComponent },
-  { path: 'profile', component: ProfileComponent }
+  { path: 'conversation/:uid', component: ConversationComponent , canActivate: [AuthenticationGuard]},
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthenticationGuard] }
 ];
 
 @NgModule({
@@ -38,7 +48,13 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    ImageCropperModule,
+    NgbModule,
+    AngularFireModule.initializeApp(environment),
+    AngularFirestoreModule, // firestore
+    AngularFireAuthModule, // auth
+    AngularFireStorageModule // storage
   ],
   providers: [],
   bootstrap: [AppComponent]
