@@ -11,6 +11,19 @@ import { ContactComponent } from './contact/contact.component';
 import { MenuComponent } from './menu/menu.component';
 import { RequestComponent } from './modals/request/request.component';
 
+import { RouterModule, Routes } from '@angular/router';
+
+/**
+ * Router for views
+ */
+const appRoutes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'conversation/:uid', component: ConversationComponent },
+  { path: 'profile', component: ProfileComponent }
+];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +37,8 @@ import { RequestComponent } from './modals/request/request.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
