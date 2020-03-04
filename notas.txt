@@ -1,0 +1,3 @@
+Comandos para crear aplicacion angular
+
+> ng new name-project
