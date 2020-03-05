@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "platzinger-6912a": {
+      "hosting": {
+        "platzinger": [
+          "platzinger-6912a"
+        ]
+      }
+    }
+  }
+}
