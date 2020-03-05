@@ -48,6 +48,7 @@ const appRoutes: Routes = [
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
