@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {DialogComponent, DialogService} from 'ng2-bootstrap-modal';
 import {UserService} from '../../services/user.service';
 import {RequestsService} from '../../services/requests.service';
+import { DialogComponent, DialogService } from 'ng2-bootstrap-modal';
 
 export interface PromptModel {
   scope: any;
@@ -16,7 +16,11 @@ export class RequestComponent extends DialogComponent<PromptModel, any> implemen
   scope: any;
   shouldAdd: string = 'yes';
   currentRequest: any;
-  constructor(public dialogService: DialogService, private userService: UserService, private requestsService: RequestsService) {
+  constructor(
+    public dialogService: DialogService,
+    private userService: UserService,
+    private requestsService: RequestsService
+    ) {
     super(dialogService);
   }
   accept() {
