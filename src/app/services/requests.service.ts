@@ -6,9 +6,7 @@ import {AngularFireDatabase} from 'angularfire2/database';
 })
 export class RequestsService {
 
-  constructor(
-    private angularFireDatabase: AngularFireDatabase
-    ) { }
+  constructor(private angularFireDatabase: AngularFireDatabase) { }
   createRequest(request) {
     const cleanEmail = request.receiver_email.replace('.', ',');
     return this.angularFireDatabase.object('requests/' + cleanEmail + '/' + request.sender).set(request);
@@ -21,5 +19,4 @@ export class RequestsService {
     const cleanEmail = email.replace('.', ',');
     return this.angularFireDatabase.list('requests/' + cleanEmail);
   }
-
 }
